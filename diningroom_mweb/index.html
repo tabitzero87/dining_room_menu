@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head></head>
+<body ng-app="note">
+	<div>{{1+2}}</div>
+	<div>
+		<input type="text" placeholder="Enter your Name" ng-model="name">
+		<h1>Hello {{name}} <span ng-bind="name"></span></h1>
+	</div>
+
+	<div ng-controller="mainctrl as ctrl">
+		<table border="1">
+			<tr ng-repeat-start="note in ctrl.notes">
+				<td>{{note.label}}</td>
+			</tr>
+			<tr ng-repeat-end>
+				<td>Done:{{note.done}}</td>
+			</tr>
+		</table>
+	</div>
+</body>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+	angular.module('note',[]).controller('mainctrl',[function(){
+		var self=this;
+		self.notes=[
+			{id:1,label:"First",done:false},
+			{id:2,label:"First2",done:false},
+			{id:3,label:"First3",done:false},
+		];
+	}]);
+</script>
+<script type="text/javascript">
+if (localStorage.pagecount)
+  {
+  localStorage.pagecount=Number(localStorage.pagecount) +1;
+  }
+else
+  {
+  localStorage.pagecount=1;
+  }
+document.write("Visits "+ localStorage.pagecount + " time(s).");
+</script>
+</html>
